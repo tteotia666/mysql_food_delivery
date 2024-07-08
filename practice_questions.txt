@@ -1,0 +1,36 @@
+Easy:
+
+Question 1
+Write a SQL query to retrieve the names of all customers who have placed an order.
+Question 2
+Write a SQL query to retrieve the total amount of all orders placed by customers in San Francisco.
+Question 3
+Write a SQL query to retrieve the name of the driver who delivered the most orders.
+
+
+Medium:
+
+Question 1
+Write a SQL query to retrieve the names of customers who have placed orders at restaurants with an average rating greater than 4.5.
+Question 2
+Write a SQL query to retrieve the total amount of orders delivered by each driver, along with the driver's name and average rating.
+Question 3
+Write a SQL query to retrieve the names of restaurants that have received orders totaling more than $1000 in the last 30 days.
+
+Question 4
+Write a SQL query to retrieve the names of customers who placed orders on their birthday. Assume that the customers table has a date_of_birth column, and the orders table has an order_datetime column.
+Question 5
+Write a SQL query to retrieve the names of drivers who delivered orders on Christmas Day (December 25) in the year 2022. Join the drivers and orders tables to retrieve the required information.
+
+Difficult:
+
+Question 1
+Write a SQL query to retrieve the total amount of orders delivered by each driver in the last 30 days, grouped by the driver's name and the week of the year.
+Question 2
+Write a SQL query to retrieve the top 3 customers with the highest total order amount in each city, using windowing functions.
+Question 3
+Write a SQL query to retrieve the average order value for each hour of the day (0-23) for all orders placed in the last 7 days.
+Question 4
+Write a SQL query to retrieve the driver who delivered the most orders in each city, using a subquery and aggregate functions.
+Question 5
+Write a SQL query to retrieve the total amount of orders placed by customers who have also placed an order in the previous 30 days, using date/time functions and a self-join.
