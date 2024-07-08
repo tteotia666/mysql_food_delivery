@@ -1,0 +1,181 @@
+brew install mysql
+
+brew services start mysql
+
+mysql_secure_installation
+
+mysql -u root -p
+
+--------------------
+
+show databases;
+
+CREATE DATABASE food_delivery;
+
+use food_delivery;
+
+CREATE TABLE customers (
+  customer_id INT AUTO_INCREMENT,
+  name VARCHAR(100),
+  address_Line_1 VARCHAR(255),
+  address_Line_2 VARCHAR(255),
+  City VARCHAR(50),
+  State VARCHAR(50),
+  zip_code INT,
+  last_active_date DATE,
+  signup_date DATE,
+  active_status VARCHAR(10),
+  PRIMARY KEY (customer_id)
+);
+
+
+INSERT INTO customers (name, address_Line_1, address_Line_2, City, State, zip_code, last_active_date, signup_date, active_status)
+VALUES
+  ('John Doe', '123 Main St', '', 'San Francisco', 'CA', 94105, '2022-01-01', '2021-12-15', 'Active'),
+  ('Jane Smith', '456 Elm St', 'Apt 101', 'San Francisco', 'CA', 94107, '2022-02-02', '2021-12-20', 'Active'),
+  ('Bob Johnson', '789 Oak St', '', 'San Francisco', 'CA', 94109, '2022-03-03', '2021-12-25', 'Active'),
+  ('Maria Lee', '901 Taylor St', '', 'San Francisco', 'CA', 94133, '2022-04-04', '2022-01-05', 'Active'),
+  ('David Kim', '2345 Market St', 'Ste 200', 'San Francisco', 'CA', 94102, '2022-05-05', '2022-01-10', 'Active'),
+  ('Emily Chen', '3456 Mission St', '', 'San Francisco', 'CA', 94110, '2022-06-06', '2022-01-15', 'Active'),
+  ('Michael Davis', '4567 Haight St', '', 'San Francisco', 'CA', 94117, '2022-07-07', '2022-01-20', 'Active'),
+  ('Sarah Taylor', '5678 Castro St', '', 'San Francisco', 'CA', 94114, '2022-08-08', '2022-01-25', 'Active'),
+  ('Kevin White', '6789 Pacific Ave', '', 'San Francisco', 'CA', 94109, '2022-09-09', '2022-02-01', 'Active'),
+  ('Lisa Brown', '7890 Geary Blvd', '', 'San Francisco', 'CA', 94118, '2022-10-10', '2022-02-05', 'Active');
+
+
+CREATE TABLE restaurants (
+  restaurant_id INT AUTO_INCREMENT,
+  name VARCHAR(100),
+  address_Line_1 VARCHAR(255),
+  address_Line_2 VARCHAR(255),
+  City VARCHAR(50),
+  State VARCHAR(50),
+  zip_code INT,
+  last_active_date DATE,
+  signup_date DATE,
+  active_status VARCHAR(10),
+  breakfast_open_time TIME,
+  breakfast_close_time TIME,
+  lunch_open_time TIME,
+  lunch_close_time TIME,
+  dinner_open_time TIME,
+  dinner_close_time TIME,
+  average_rating DOUBLE,
+  PRIMARY KEY (restaurant_id)
+);
+
+
+INSERT INTO restaurants (name, address_Line_1, address_Line_2, City, State, zip_code, last_active_date, signup_date, active_status, breakfast_open_time, breakfast_close_time, lunch_open_time, lunch_close_time, dinner_open_time, dinner_close_time, average_rating)
+VALUES
+  ('The Breakfast Club', '123 Main St', '', 'San Francisco', 'CA', 94105, '2022-01-01', '2021-12-15', 'Active', '08:00:00', '11:00:00', '12:00:00', '14:00:00', '17:00:00', '21:00:00', 4.5),
+  ('Lunchbox', '456 Elm St', 'Ste 101', 'San Francisco', 'CA', 94107, '2022-02-02', '2021-12-20', 'Active', '', '', '11:00:00', '14:00:00', '17:00:00', '21:00:00', 4.2),
+  ('Dinner Delights', '789 Oak St', '', 'San Francisco', 'CA', 94109, '2022-03-03', '2021-12-25', 'Active', '', '', '', '', '17:00:00', '22:00:00', 4.8),
+  ('The Sandwich Shop', '901 Taylor St', '', 'San Francisco', 'CA', 94133, '2022-04-04', '2022-01-05', 'Active', '', '', '11:00:00', '15:00:00', '17:00:00', '20:00:00', 4.3),
+  ('Foodie Frenzy', '2345 Market St', 'Ste 200', 'San Francisco', 'CA', 94102, '2022-05-05', '2022-01-10', 'Active', '08:00:00', '11:00:00', '12:00:00', '14:00:00', '17:00:00', '21:00:00', 4.6),
+  ('Bistro Bliss', '3456 Mission St', '', 'San Francisco', 'CA', 94110, '2022-06-06', '2022-01-15', 'Active', '', '', '12:00:00', '14:00:00', '17:00:00', '22:00:00', 4.9),
+  ('The Coffee Spot', '4567 Haight St', '', 'San Francisco', 'CA', 94117, '2022-07-07', '2022-01-20', 'Active', '08:00:00', '12:00:00', '', '', '', '', 4.4),
+  ('Tasty Treats', '5678 Castro St', '', 'San Francisco', 'CA', 94114, '2022-08-08', '2022-01-25', 'Active', '', '', '12:00:00', '15:00:00', '17:00:00', '20:00:00', 4.1),
+  ('Bistro Bliss', '123 Main St', '', 'San Francisco', 'CA', 94105, '2022-01-01', '2021-12-15', 'Active', '08:00:00', '11:00:00', '12:00:00', '14:00:00', '18:00:00', '22:00:00', 4.5),
+  ('Tasty Tacos', '456 Elm St', 'Apt 101', 'San Francisco', 'CA', 94107, '2022-02-02', '2021-12-20', 'Active', '09:00:00', '12:00:00', '13:00:00', '16:00:00', '19:00:00', '23:00:00', 4.8),
+  ('Sushi Palace', '789 Oak St', '', 'San Francisco', 'CA', 94109, '2022-03-03', '2021-12-25', 'Active', '11:00:00', '14:00:00', '15:00:00', '18:00:00', '20:00:00', '01:00:00', 4.9),
+  ('Indian Spice', '901 Taylor St', '', 'San Francisco', 'CA', 94133, '2022-04-04', '2022-01-05', 'Active', '12:00:00', '15:00:00', '16:00:00', '19:00:00', '21:00:00', '02:00:00', 4.7),
+  ('Burger Barn', '2345 Market St', 'Ste 200', 'San Francisco', 'CA', 94102, '2022-05-05', '2022-01-10', 'Active', '10:00:00', '13:00:00', '14:00:00', '17:00:00', '19:00:00', '22:00:00', 4.6),
+  ('China King', '3456 Mission St', '', 'San Francisco', 'CA', 94110, '2022-06-06', '2022-01-15', 'Active', '11:00:00', '14:30:00', '15:30:00', '18:30:00', '20:30:00', '23:30:00', 4.5);
+
+
+CREATE TABLE drivers (
+  driver_id INT AUTO_INCREMENT,
+  name VARCHAR(100),
+  vehicle_type VARCHAR(50),
+  last_active_date DATE,
+  signup_date DATE,
+  active_status VARCHAR(10),
+  average_rating DOUBLE,
+  PRIMARY KEY (driver_id)
+);
+
+INSERT INTO drivers (name, vehicle_type, last_active_date, signup_date, active_status, average_rating)
+VALUES
+  ('John Smith', 'Car', '2022-01-01', '2021-12-15', 'Active', 4.8),
+  ('Jane Johnson', 'Motorcycle', '2022-02-02', '2021-12-20', 'Active', 4.9),
+  ('Bob Williams', 'Van', '2022-03-03', '2021-12-25', 'Active', 4.7),
+  ('Maria Davis', 'Car', '2022-04-04', '2022-01-05', 'Active', 4.8),
+  ('David Lee', 'Motorcycle', '2022-05-05', '2022-01-10', 'Active', 4.9),
+  ('Emily Chen', 'Van', '2022-06-06', '2022-01-15', 'Active', 4.7),
+  ('Michael Brown', 'Car', '2022-07-07', '2022-01-20', 'Active', 4.8),
+  ('Sarah Taylor', 'Motorcycle', '2022-08-08', '2022-01-25', 'Active', 4.9),
+  ('Kevin White', 'Van', '2022-09-09', '2022-02-01', 'Active', 4.7),
+  ('Lisa Harris', 'Car', '2022-10-10', '2022-02-05', 'Active', 4.8);
+
+
+
+CREATE TABLE orders (
+  order_id INT AUTO_INCREMENT,
+  order_datetime DATETIME,
+  pickup_datetime DATETIME,
+  delivery_datetime DATETIME,
+  customer_id INT,
+  restaurant_id INT,
+  driver_id INT,
+  order_status VARCHAR(50),
+  order_total_amount INT,
+  order_num_items INT,
+  PRIMARY KEY (order_id),
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id),
+  FOREIGN KEY (driver_id) REFERENCES drivers(driver_id)
+);
+
+
+INSERT INTO orders (order_datetime, pickup_datetime, delivery_datetime, customer_id, restaurant_id, driver_id, order_status, order_total_amount, order_num_items)
+VALUES
+  ('2022-01-01 12:00:00', '2022-01-01 12:30:00', '2022-01-01 13:00:00', 110, 114, 1, 'Delivered', 25, 2),
+  ('2022-01-02 13:00:00', '2022-01-02 13:30:00', '2022-01-02 14:00:00', 111, 115, 1, 'Delivered', 30, 3),
+  ('2022-01-03 14:00:00', '2022-01-03 14:30:00', '2022-01-03 15:00:00', 112, 115, 2, 'Delivered', 20, 1),
+  ('2022-01-04 15:00:00', '2022-01-04 15:30:00', '2022-01-04 16:00:00', 113, 114, 3, 'Delivered', 35, 4),
+  ('2022-01-05 16:00:00', '2022-01-05 16:30:00', '2022-01-05 17:00:00', 114, 116, 4, 'Delivered', 40, 5),
+  ('2022-01-06 17:00:00', '2022-01-06 17:30:00', '2022-01-06 18:00:00', 115, 117, 3, 'Delivered', 25, 2),
+  ('2022-01-07 18:00:00', '2022-01-07 18:30:00', '2022-01-07 19:00:00', 116, 119, 6, 'Delivered', 30, 3),
+  ('2022-01-08 19:00:00', '2022-01-08 19:30:00', '2022-01-08 20:00:00', 117, 120, 7, 'Delivered', 55, 8),
+  ('2022-01-09 20:00:00', '2022-01-09 20:30:00', '2022-01-09 21:00:00', 118, 115, 8, 'Delivered', 60, 9),
+  ('2022-01-10 21:00:00', '2022-01-10 21:30:00', '2022-01-10 22:00:00', 119, 116, 9, 'Delivered', 65, 10),
+  ('2022-01-11 10:00:00', '2022-01-11 10:20:00', '2022-01-11 10:45:00', 110, 114, 1, 'Delivered', 15, 2),
+  ('2022-01-11 11:00:00', '2022-01-11 11:20:00', '2022-01-11 11:45:00', 111, 115, 2, 'Delivered', 20, 3),
+  ('2022-01-11 12:00:00', '2022-01-11 12:20:00', '2022-01-11 12:45:00', 112, 116, 3, 'Delivered', 25, 4),
+  ('2022-01-11 13:00:00', '2022-01-11 13:20:00', '2022-01-11 13:45:00', 113, 117, 4, 'Delivered', 30, 5),
+  ('2022-01-12 10:00:00', '2022-01-12 10:20:00', '2022-01-12 10:45:00', 114, 118, 5, 'Delivered', 35, 2),
+  ('2022-01-12 11:00:00', '2022-01-12 11:20:00', '2022-01-12 11:45:00', 115, 119, 6, 'Delivered', 40, 3),
+  ('2022-01-12 12:00:00', '2022-01-12 12:20:00', '2022-01-12 12:45:00', 116, 120, 7, 'Delivered', 45, 4),
+  ('2022-01-12 13:00:00', '2022-01-12 13:20:00', '2022-01-12 13:45:00', 117, 121, 8, 'Delivered', 50, 5),
+  ('2022-01-13 10:00:00', '2022-01-13 10:20:00', '2022-01-13 10:45:00', 118, 122, 9, 'Delivered', 55, 2),
+  ('2022-01-13 11:00:00', '2022-01-13 11:20:00', '2022-01-13 11:45:00', 119, 123, 10, 'Delivered', 60, 3),
+  ('2022-01-13 12:00:00', '2022-01-13 12:20:00', '2022-01-13 12:45:00', 110, 124, 1, 'Delivered', 65, 4),
+  ('2022-01-13 13:00:00', '2022-01-13 13:20:00', '2022-01-13 13:45:00', 111, 125, 2, 'Delivered', 70, 5),
+  ('2022-01-14 10:00:00', '2022-01-14 10:20:00', '2022-01-14 10:45:00', 112, 126, 3, 'Delivered', 75, 2),
+  ('2022-01-14 11:00:00', '2022-01-14 11:20:00', '2022-01-14 11:45:00', 113, 127, 4, 'Delivered', 80, 3),
+  ('2022-01-14 12:00:00', '2022-01-14 12:20:00', '2022-01-14 12:45:00', 114, 114, 5, 'Delivered', 85, 4),
+  ('2022-01-14 13:00:00', '2022-01-14 13:20:00', '2022-01-14 13:45:00', 115, 115, 6, 'Delivered', 90, 5),
+  ('2022-01-15 10:00:00', '2022-01-15 10:20:00', '2022-01-15 10:45:00', 116, 116, 7, 'Delivered', 95, 2),
+  ('2022-01-15 11:00:00', '2022-01-15 11:20:00', '2022-01-15 11:45:00', 117, 117, 8, 'Delivered', 100, 3),
+  ('2022-01-15 12:00:00', '2022-01-15 12:20:00', '2022-01-15 12:45:00', 118, 118, 9, 'Delivered', 105, 4),
+  ('2022-01-15 13:00:00', '2022-01-15 13:20:00', '2022-01-15 13:45:00', 119, 119, 10, 'Delivered', 110, 5),
+  ('2022-01-16 10:00:00', '2022-01-16 10:20:00', '2022-01-16 10:45:00', 110, 120, 1, 'Delivered', 20, 3),
+  ('2022-01-16 11:00:00', '2022-01-16 11:20:00', '2022-01-16 11:45:00', 111, 121, 2, 'Delivered', 25, 2),
+  ('2022-01-16 12:00:00', '2022-01-16 12:20:00', '2022-01-16 12:45:00', 112, 122, 3, 'Delivered', 30, 4),
+  ('2022-01-16 13:00:00', '2022-01-16 13:20:00', '2022-01-16 13:45:00', 113, 123, 4, 'Delivered', 35, 1),
+  ('2022-01-17 10:00:00', '2022-01-17 10:20:00', '2022-01-17 10:45:00', 114, 124, 5, 'Delivered', 40, 3),
+  ('2022-01-17 11:00:00', '2022-01-17 11:20:00', '2022-01-17 11:45:00', 115, 125, 6, 'Delivered', 45, 2),
+  ('2022-01-17 12:00:00', '2022-01-17 12:20:00', '2022-01-17 12:45:00', 116, 126, 7, 'Delivered', 50, 4),
+  ('2022-01-17 13:00:00', '2022-01-17 13:20:00', '2022-01-17 13:45:00', 117, 127, 8, 'Delivered', 55, 1),
+  ('2022-01-18 10:00:00', '2022-01-18 10:20:00', '2022-01-18 10:45:00', 118, 114, 9, 'Delivered', 60, 3),
+  ('2022-01-18 11:00:00', '2022-01-18 11:20:00', '2022-01-18 11:45:00', 119, 115, 10, 'Delivered', 65, 2),
+  ('2022-01-18 12:00:00', '2022-01-18 12:20:00', '2022-01-18 12:45:00', 110, 116, 1, 'Delivered', 70, 4),
+  ('2022-01-18 13:00:00', '2022-01-18 13:20:00', '2022-01-18 13:45:00', 111, 117, 2, 'Delivered', 75, 1),
+  ('2022-01-19 10:00:00', '2022-01-19 10:20:00', '2022-01-19 10:45:00', 112, 118, 3, 'Delivered', 80, 3),
+  ('2022-01-19 11:00:00', '2022-01-19 11:20:00', '2022-01-19 11:45:00', 113, 119, 4, 'Delivered', 85, 2),
+  ('2022-01-19 12:00:00', '2022-01-19 12:20:00', '2022-01-19 12:45:00', 114, 120, 5, 'Delivered', 90, 4),
+  ('2022-01-19 13:00:00', '2022-01-19 13:20:00', '2022-01-19 13:45:00', 115, 121, 6, 'Delivered', 95, 1),
+  ('2022-01-20 10:00:00', '2022-01-20 10:20:00', '2022-01-20 10:45:00', 116, 122, 7, 'Delivered', 100, 3),
+  ('2022-01-20 11:00:00', '2022-01-20 11:20:00', '2022-01-20 11:45:00', 117, 123, 8, 'Delivered', 105, 2),
+  ('2022-01-20 12:00:00', '2022-01-20 12:20:00', '2022-01-20 12:45:00', 118, 124, 9, 'Delivered', 110, 4),
+  ('2022-01-20 13:00:00', '2022-01-20 13:20:00', '2022-01-20 13:45:00', 119, 125, 10, 'Delivered', 115, 1);
